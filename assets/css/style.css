@@ -71,7 +71,7 @@ a, button, input[type=checkbox] {
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, p, a, span {
+h1, h2, h3, h4, h5, div, button, p, a, span {
   cursor: default;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -109,7 +109,8 @@ body header .carret {
   outline: none;
   opacity: 1;
   transition: all 250ms;
-  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 8px rgba(187, 187, 187, 0.1333333333);
+  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 10px rgba(170, 170, 170, 0.1333333333);
+  cursor: pointer;
 }
 body header .carret span {
   position: absolute;
@@ -270,7 +271,8 @@ body main .carret-navigate {
   z-index: 10;
   transition: all 250ms;
   opacity: 1;
-  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 8px rgba(187, 187, 187, 0.1333333333);
+  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 10px rgba(170, 170, 170, 0.1333333333);
+  cursor: pointer;
 }
 body main .carret-navigate span {
   position: relative;
@@ -762,4 +764,9 @@ body main section.contact .container .alternative .way .description h2 {
 }
 body main section.contact .container .alternative .way .description .content {
   font-weight: 300;
+  cursor: text;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
 }/*# sourceMappingURL=style.css.map */

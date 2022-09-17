@@ -72,7 +72,7 @@ a, button, input[type="checkbox"] {
     cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, p, a, span {
+h1, h2, h3, h4, h5, div, button, p, a, span {
     cursor: default;
     user-select: none;
 }
@@ -108,7 +108,8 @@ body {
             opacity: 1;
             transition: all 250ms;
             box-shadow: 0 0 10px 5px var(--white-3),
-                        0 0 15px 8px #bbb2;
+                        0 0 15px 10px #aaa2;
+            cursor: pointer;
 
             span {
                 position: absolute;
@@ -278,7 +279,8 @@ body {
             transition: all 250ms;
             opacity: 1;
             box-shadow: 0 0 10px 5px var(--white-3),
-                        0 0 15px 8px #bbb2;
+                        0 0 15px 10px #aaa2;
+            cursor: pointer;
 
             span {
                 position: relative;
@@ -770,8 +772,14 @@ body {
 
                             .description {
                                 text-align: center;
+                                
                                 h2 {margin: 10px 0}
-                                .content {font-weight: 300}
+                                
+                                .content {
+                                    font-weight: 300;
+                                    cursor: text;
+                                    user-select: text;
+                                }
                             }
                         }
                     }
