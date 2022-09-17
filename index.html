@@ -39,11 +39,13 @@
     <link type="image/x-icon" rel="shortcut icon" href="./favicon.ico">
     <link type="image/x-icon" rel="shortcut icon" href="./assets/images/favicon.ico">
 
+    <script type="text/javascript" src="./assets/app.js"></script>
+
 </head>
 <body>
 
     <header class="d-block">
-        <button class="carret d-flex justify-center align-center" onclick="(this.parentElement.classList.toggle('active'),this.blur())">
+        <button class="carret d-flex justify-center align-center">
             <span class="d-block"></span>
         </button>
 
@@ -83,7 +85,7 @@
     <main role="main">
         <div class="slide"></div>
 
-        <button type="button" class="carret-navigate d-block" onclick="(window.scroll(0,scrollY+innerHeight),this.blur())">
+        <button type="button" class="carret-navigate d-block">
             <span class="d-block"></span>
         </button>
 
@@ -313,143 +315,6 @@
             </div>
         </section>
     </main>
-
-    <script type="text/javascript">
-        const updateLeftScroll = () => {
-            // var _s = window.scrollY / window.innerHeight / 2e-2 + 50; (_s < 100 && (_s = 100));
-            var _s = window.scrollY / window.innerHeight / 2e-2 + 50; (_s > 100 && (_s = 100));
-            document.querySelector('.slide').style.right = `calc(${_s}vw - 100px)`;
-        };
-
-        window.scroll(0, 1e5);
-        updateLeftScroll();
-
-        document.body.onscroll = updateLeftScroll;
-        document.getElementById('_age').innerHTML += Math.floor((new Date() - new Date("4 May 2000"))/(2**10*3**3*5**6*73));
-        document.getElementById('discord').addEventListener('click',(e)=>(function(e){(e.preventDefault()),(e.stopPropagation());var a=document.createElement('textarea');(a.innerHTML='Ezequiel Dev#1565'),(e.target.append(a)),(a.focus()),(a.select());try{(document.execCommand('copy'));var b=document.querySelector('.copy-message');(b.classList.replace('hidden','visible')),(setTimeout(()=>b.classList.replace('visible','hidden'),1500))}catch(err){alert('An error as occured.')}(a.remove()),(e.target.blur())})(e));
-        document.querySelectorAll('body > main > section.name-slide.d-flex > div > div.infos > ul > li > a').forEach(a=>a.addEventListener('click',()=>a.blur()));
-
-        document.querySelector('#contact > div > form').setAttribute('style', '--s:'.concat(Math.round((document.querySelector('#contact > div > form > div.first-inputs.d-flex.wrap.space-evenly').clientWidth-document.querySelector('#contact > div > form > div.first-inputs.d-flex.wrap.space-evenly > div:first-child').clientWidth*2)/3e-3)/1e3).concat('px;'));
-
-        window.addEventListener('load', function () {
-            var main = document.querySelector('main');
-            var toggleFormsButtons = main.querySelectorAll('button.toggle-form');
-            var documentInputs = main.querySelectorAll('input');
-            var inputBox = main.querySelectorAll('.input-box');
-            var forms = main.querySelectorAll('.form-content');
-            
-            function disableInputs(delay) {
-                if (delay === void 0) {
-                    delay = 1000;
-                }
-
-                // After a delay, enable inputs
-                setTimeout(function () {
-                    return documentInputs.forEach(function (a) {
-                        return a.disabled = false;
-                    });
-                }, delay);
-
-                // Disable inputs
-                documentInputs.forEach(function (a) {
-                    return a.disabled = true;
-                });
-                
-                setTimeout(function () {
-                    // Remove content
-                    documentInputs.forEach(function (a) {
-                        if (String(a.value).length)
-                            a.value = "";
-                    });
-
-                    inputBox.forEach(function (a) {
-                        a.classList.remove('complete', 'focused');
-
-                        if (a.classList.contains('input-password')) {
-                            a.querySelector('input').type = "password";
-
-                            try {
-                                a.querySelector('img').src = "../assets/images/eye-slash.svg";
-                            } catch (error) { }
-                        }
-                    });
-
-                    forms.forEach(a => a.querySelectorAll('input[type="checkbox"]').forEach(b => b.checked = false));
-                }, 350);
-            };
-
-            /* Toggle forms */
-            toggleFormsButtons.forEach(function (a) {
-                return a.onclick = function () {
-                    // Toggle form
-                    if (main.classList.contains('register')) {
-                        main.classList.remove('register');
-                        main.classList.add('login');
-                    } else {
-                        main.classList.add('register');
-                        main.classList.remove('login');
-                    }
-
-                    // Disable inputs during animation
-                    disableInputs();
-                };
-            });
-
-            /* Inputs */
-            inputBox.forEach(function (a) {
-                var input = a.querySelector('input');
-                /** @var tpv : Toggle Password Visiblity */
-                var tpv = a.querySelector('#toggle-visibility') || null;
-
-                // Focus
-                input.addEventListener('focusin', function () {
-                    return a.classList.add('focused');
-                });
-                input.addEventListener('focusout', function () {
-                    return a.classList.remove('focused');
-                });
-                // Complete
-                input.addEventListener('keyup', function () {
-                    return a.classList[String(input.value).length ? "add" : "remove"]('complete');
-                });
-                input.addEventListener('keydown', function () {
-                    return a.classList[String(input.value).length ? "add" : "remove"]('complete');
-                });
-                
-                // Toggle password visibility
-                if (null !== tpv) {
-                    tpv.addEventListener('click', function (e) {
-                        e.preventDefault();
-                    
-                        input.type = input.type == "text" ? "password" : "text";
-                        tpv.querySelector('img').src = "../assets/images/eye".concat(input.type == "text" ? "" : "-slash", ".svg");
-                    
-                        input.focus();
-                    });
-
-                    tpv.querySelector('img').src = "../assets/images/eye".concat(input.type == "text" ? "" : "-slash", ".svg");
-                }
-            });
-            
-            /* Submit */
-            forms.forEach(function (a) { return a.onsubmit = function (e) {
-                e.preventDefault();
-                
-                main.classList.add('submiting');
-                
-                // Submit animation
-                a.querySelector('button[type="submit"]').classList.add('submit');
-                
-                // Disable inputs while submiting form
-                var disableWhenSubmiting = setInterval(function () {
-                    if (main.classList.contains('submiting'))
-                        disableInputs(100);
-                    else
-                        clearInterval(disableWhenSubmiting);
-                }, 100);
-            }; });
-        });
-    </script>
 
     <noscript class="d-flex column align-center justify-center">
         Please enable JavaScript in your browser.
