@@ -42,9 +42,43 @@
 </head>
 <body>
 
-    <noscript class="d-flex column align-center justify-center">
-        Please enable JavaScript in your browser.
-    </noscript>
+    <header class="d-block">
+        <button class="carret d-flex justify-center align-center" onclick="(this.parentElement.classList.toggle('active'),this.blur())">
+            <span class="d-block"></span>
+        </button>
+
+        <nav>
+            <menu class="d-flex align-center space-between">
+                <li class="d-flex justify-center align-center">
+                    <a class="d-flex align-center justify-center" href="#">
+                        <img src="./assets/images/home.png" alt="Home">
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li class="d-flex justify-center align-center">
+                    <a class="d-flex align-center justify-center" href="#">
+                        <img src="./assets/images/profile.png" alt="About">
+                        <span>About</span>
+                    </a>
+                </li>
+
+                <li class="d-flex justify-center align-center">
+                    <a class="d-flex align-center justify-center" href="#">
+                        <img src="./assets/images/apps.png" alt="Services">
+                        <span>Services</span>
+                    </a>
+                </li>
+
+                <li class="d-flex justify-center align-center">
+                    <a class="d-flex align-center justify-center" href="#">
+                        <img src="./assets/images/envelope.png" alt="Contact">
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </menu>
+        </nav>
+    </header>
 
     <main role="main">
         <div class="slide"></div>
@@ -225,6 +259,10 @@
         document.getElementById('discord').addEventListener('click',(e)=>(function(e){(e.preventDefault()),(e.stopPropagation());var a=document.createElement('textarea');(a.innerHTML='Ezequiel Dev#1565'),(e.target.append(a)),(a.focus()),(a.select());try{(document.execCommand('copy'));var b=document.querySelector('.copy-message');(b.classList.replace('hidden','visible')),(setTimeout(()=>b.classList.replace('visible','hidden'),1500))}catch(err){alert('An error as occured.')}(a.remove()),(e.target.blur())})(e));
         document.querySelectorAll('body > main > section.name-slide.d-flex > div > div.infos > ul > li > a').forEach(a=>a.addEventListener('click',()=>a.blur()));
     </script>
+
+    <noscript class="d-flex column align-center justify-center">
+        Please enable JavaScript in your browser.
+    </noscript>
 
 </body>
 </html>

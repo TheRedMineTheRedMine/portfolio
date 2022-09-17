@@ -28,8 +28,7 @@ a, button, input, textarea {
 }
 
 :root {
-  --primary-color: #f12;
-  --secondary-color: #37e;
+  --primary-color: #2dc081;
   --white: #fff;
   --white-1: #eee;
   --white-2: #ddd;
@@ -95,6 +94,152 @@ body {
   background: var(--background-theme);
   overflow-x: hidden;
 }
+body header {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+body header .carret {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  opacity: 1;
+  transition: all 250ms;
+  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 8px rgba(187, 187, 187, 0.1333333333);
+}
+body header .carret span {
+  position: absolute;
+  width: 35px;
+  height: 4px;
+  background: var(--white-1);
+  border-radius: 2px;
+  pointer-events: none;
+  top: 17px;
+  transform: none;
+  transition: all 350ms;
+}
+body header .carret span::before, body header .carret span::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--white-1);
+  position: relative;
+  border-radius: 2px;
+  transform: none;
+  transition: all 350ms;
+}
+body header .carret span::before {
+  top: 10px;
+}
+body header .carret span::after {
+  top: 17.5px;
+}
+body header .carret:hover, body header .carret:focus {
+  opacity: 65%;
+}
+body header nav {
+  position: absolute;
+  right: 80px;
+  top: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+body header nav menu {
+  list-style: none;
+  background: var(--white);
+  border-radius: 1em;
+  gap: 5px;
+  box-shadow: 0 5px 10px 2px #ddd;
+}
+body header nav menu li {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+body header nav menu li a {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 400;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--white);
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+body header nav menu li a img {
+  width: 25px;
+  height: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 1;
+  z-index: 1;
+  transition: all 0.3s;
+}
+body header nav menu li a span {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.3s;
+  color: var(--white);
+}
+body header nav menu li a::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s;
+}
+body header nav menu li a:hover img, body header nav menu li a:focus img {
+  opacity: 0;
+}
+body header nav menu li a:hover span, body header nav menu li a:focus span {
+  opacity: 1;
+}
+body header nav menu li a:hover::before, body header nav menu li a:focus::before {
+  opacity: 0.7;
+}
+body header nav menu::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  top: 20px;
+  right: -8px;
+  transform: rotate(45deg);
+  z-index: 0;
+}
+body header.active .carret span {
+  top: 27px;
+  transform: rotate(-45deg);
+}
+body header.active .carret span::before {
+  opacity: 0;
+}
+body header.active .carret span::after {
+  transform: rotate(-90deg);
+  top: -4px;
+}
+body header.active nav {
+  opacity: 1;
+}
 body main {
   position: relative;
   overflow: hidden;
@@ -116,8 +261,8 @@ body main .carret-navigate {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: var(--primary-color);
   border-radius: 50%;
   border: unset;
@@ -125,15 +270,16 @@ body main .carret-navigate {
   z-index: 10;
   transition: all 250ms;
   opacity: 1;
+  box-shadow: 0 0 10px 5px var(--white-3), 0 0 15px 8px rgba(187, 187, 187, 0.1333333333);
 }
 body main .carret-navigate span {
   position: relative;
   background: var(--white-1);
-  width: 20px;
+  width: 25px;
   height: 5px;
   border-radius: 3px;
   transform: rotate(45deg);
-  left: 4px;
+  left: 5px;
   top: 3px;
   pointer-events: none;
 }
@@ -146,8 +292,8 @@ body main .carret-navigate span::after {
   background: var(--white-1);
   position: absolute;
   transform: rotate(90deg);
-  left: 8px;
-  bottom: 8px;
+  left: 10.5px;
+  bottom: 10.5px;
 }
 body main .carret-navigate:hover, body main .carret-navigate:focus {
   opacity: 75%;
